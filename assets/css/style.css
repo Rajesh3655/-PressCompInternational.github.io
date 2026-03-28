@@ -154,7 +154,24 @@ p{color:var(--steel);line-height:1.8;font-size:1rem;}
   height:68px;
 }
 
-/* Logo */
+/* Logo Image */
+.logo-img-wrap{
+  display:flex;align-items:center;text-decoration:none;
+  flex-shrink:0;
+}
+.site-logo{
+  height:46px;
+  width:auto;
+  max-width:220px;
+  object-fit:contain;
+  /* No filter needed — logo_nobg.png has transparent background */
+  /* Slightly brighten so navy logo is visible on dark navbar */
+  filter:brightness(1) saturate(0.5) invert(1);
+  transition:opacity 0.2s ease;
+}
+.site-logo:hover{opacity:0.8;}
+
+/* Keep old classes for any pages still using text logo */
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
 .logo-mark{
   width:42px;height:42px;border-radius:8px;
@@ -167,8 +184,7 @@ p{color:var(--steel);line-height:1.8;font-size:1rem;}
 .logo-text{display:flex;flex-direction:column;}
 .logo-name{
   font-family:var(--font-head);font-weight:900;font-size:1rem;
-  color:#fff;line-height:1.1;letter-spacing:.01em;
-  white-space:nowrap;
+  color:#fff;line-height:1.1;letter-spacing:.01em;white-space:nowrap;
 }
 .logo-sub{font-size:.6rem;color:var(--steel-light);letter-spacing:.1em;text-transform:uppercase;}
 
