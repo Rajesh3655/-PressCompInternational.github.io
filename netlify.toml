@@ -1,0 +1,15 @@
+# Netlify Configuration for Press Comp International Static Site
+
+[build]
+  # For static HTML sites, the publish directory is the root
+  publish = "."
+
+[dev]
+  # Local development server (matching the current setup)
+  port = 8080
+
+[[redirects]]
+  # Example: Handle form redirects if needed
+  from = "/submit-form"
+  to = "https://softsitesolution.in"
+  status = 302
