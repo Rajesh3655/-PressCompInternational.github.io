@@ -50,22 +50,86 @@
       navMain?.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
 
-    // Active link
+    // Active link highlighting for both direct links and dropdown parents
     const page = location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-links a').forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === page);
+    document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
+      const href = a.getAttribute('href');
+      const isActive = href === page || (page.includes('products') && href?.includes('products')) || (page.includes('industries') && href?.includes('industries'));
+      a.classList.toggle('active', isActive);
+      
+      // Highlight parent span in desktop dropdown if a sublink is active
+      if (isActive && a.classList.contains('dropdown-link')) {
+        a.closest('.nav-item')?.querySelector('span')?.classList.add('active');
+      }
+    });
+
+    // Handle direct link active state for top-level nav items that are spans
+    document.querySelectorAll('.nav-item').forEach(item => {
+      const span = item.querySelector('span');
+      if (span) {
+        const text = span.textContent.toLowerCase();
+        if ((page.includes('products') && text.includes('product')) || (page.includes('industries') && text.includes('industries'))) {
+          span.classList.add('active');
+        }
+      }
     });
   }
 
   /* ─── Mobile Menu ─── */
   function initMobileMenu() {
-    const ham = document.getElementById('hamburger');
-    const menu = document.getElementById('mobileMenu');
-    const close = document.getElementById('mobileClose');
-    const toggle = (open) => menu?.classList.toggle('open', open);
-    ham?.addEventListener('click', () => toggle(true));
-    close?.addEventListener('click', () => toggle(false));
-    menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggle(false)));
+    const ham      = document.getElementById('hamburger');
+    const menu     = document.getElementById('mobileMenu');
+    const close    = document.getElementById('mobileClose');
+    const backdrop = document.getElementById('mmBackdrop');
+
+    if (!menu) return;
+
+    // Highlight active page link
+    const page = location.pathname.split('/').pop() || 'index.html';
+    menu.querySelectorAll('.mm-nav a').forEach(a => {
+      if (a.getAttribute('href') === page) a.classList.add('active');
+    });
+
+    function openMenu() {
+      menu.classList.add('open');
+      backdrop.classList.add('show');
+      ham?.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      menu.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeMenu() {
+      menu.classList.remove('open');
+      backdrop.classList.remove('show');
+      ham?.classList.remove('is-open');
+      document.body.style.overflow = '';
+      menu.setAttribute('aria-hidden', 'true');
+    }
+
+    ham?.addEventListener('click', () => menu.classList.contains('open') ? closeMenu() : openMenu());
+    close?.addEventListener('click', closeMenu);
+    backdrop?.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+    // Accordion Logic
+    const dropdowns = menu.querySelectorAll('.mm-dropdown');
+    dropdowns.forEach(dd => {
+      const btn = dd.querySelector('.mm-drop-btn');
+      btn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        
+        // Close others
+        dropdowns.forEach(other => {
+          other.querySelector('.mm-drop-btn')?.setAttribute('aria-expanded', 'false');
+        });
+
+        btn.setAttribute('aria-expanded', (!isOpen).toString());
+      });
+    });
+
+    // Close when a nav link is clicked
+    menu.querySelectorAll('.mm-nav a').forEach(a => a.addEventListener('click', closeMenu));
   }
 
   /* ─── Scroll Reveal ─── */

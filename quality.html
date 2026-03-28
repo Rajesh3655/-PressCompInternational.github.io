@@ -12,22 +12,124 @@
   <div class="nav-top"><div class="container nav-top-inner"><div class="nt-contact"><a href="tel:+919876543210">📞 +91 98765 43210</a><a href="mailto:info@presscompintl.com">✉️ info@presscompintl.com</a></div></div></div>
   <div class="nav-main"><div class="container nav-inner">
     <a href="index.html" class="logo-img-wrap"><img src="assets/images/logo_nobg.png" alt="Press Comp International" class="site-logo" width="200" height="52" loading="eager"/></a>
-    <div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="capabilities.html">Capabilities</a><a href="products.html">Products</a><a href="industries.html">Industries</a><a href="quality.html" class="active">Quality</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a></div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="capabilities.html">Capabilities</a>
+        <div class="nav-item">
+          <span>Products <span class="chevron"></span></span>
+          <div class="dropdown-menu">
+            <a href="products.html" class="dropdown-link">📦 All Products</a>
+            <a href="products.html?cat=telecom" class="dropdown-link">📡 Telecom</a>
+            <a href="products.html?cat=automotive" class="dropdown-link">🚗 Automotive</a>
+            <a href="products.html?cat=electrical" class="dropdown-link">⚡ Electrical</a>
+            <a href="products.html?cat=electronics" class="dropdown-link">💻 Electronics</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <span>Industries <span class="chevron"></span></span>
+          <div class="dropdown-menu">
+            <a href="industries.html" class="dropdown-link">🏗️ All Industries</a>
+            <a href="industries.html#telecom" class="dropdown-link">📡 Telecom</a>
+            <a href="industries.html#automotive" class="dropdown-link">🚗 Automotive</a>
+            <a href="industries.html#electronics" class="dropdown-link">💻 Electronics</a>
+            <a href="industries.html#electrical" class="dropdown-link">⚡ Electrical</a>
+          </div>
+        </div>
+        <a href="quality.html">Quality</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </div>
     <div class="nav-cta"><a href="contact.html" class="btn btn-primary">Request Quote</a></div>
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </div></div>
 </nav>
-<div class="mobile-menu" id="mobileMenu"><span class="mobile-menu-close" id="mobileClose">×</span><a href="index.html">Home</a><a href="about.html">About Us</a><a href="capabilities.html">Capabilities</a><a href="products.html">Products</a><a href="industries.html">Industries</a><a href="quality.html">Quality</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a></div>
+
+<!-- Premium Mobile Menu Backdrop -->
+<div class="mm-backdrop" id="mmBackdrop"></div>
+
+<!-- Premium Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <!-- Header -->
+  <div class="mm-header">
+    <div class="mm-logo">
+      <div class="mm-logo-mark">PCI</div>
+      <div class="mm-logo-text">
+        Press Comp International
+        <div class="mm-logo-sub">Precision Manufacturing Since 1983</div>
+      </div>
+    </div>
+    <button class="mm-close" id="mobileClose" aria-label="Close menu">✕</button>
+  </div>
+
+  <!-- Nav Links with Dropdowns -->
+  <nav class="mm-nav" aria-label="Mobile navigation">
+    <a href="index.html">🏠 Home</a>
+    <a href="about.html">🏭 About Us</a>
+    <a href="capabilities.html">⚙️ Capabilities</a>
+    
+    <!-- Products Dropdown -->
+    <div class="mm-dropdown">
+      <button class="mm-drop-btn" aria-haspopup="true" aria-expanded="false">📦 Products <span class="mm-chevron"></span></button>
+      <div class="mm-drop-content">
+        <div class="mm-drop-content-inner">
+          <a href="products.html?cat=telecom">📡 Telecom Components</a>
+          <a href="products.html?cat=automotive">🚗 Automotive Parts</a>
+          <a href="products.html?cat=electrical">⚡ Electrical Gear</a>
+          <a href="products.html?cat=electronics">💻 Electronics Parts</a>
+          <a href="products.html" class="mm-view-all">View All Products →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Industries Dropdown -->
+    <div class="mm-dropdown">
+      <button class="mm-drop-btn" aria-haspopup="true" aria-expanded="false">🏗️ Industries <span class="mm-chevron"></span></button>
+      <div class="mm-drop-content">
+        <div class="mm-drop-content-inner">
+          <a href="industries.html#telecom">📡 Telecom Infrastructure</a>
+          <a href="industries.html#automotive">🚗 Automotive OEMs</a>
+          <a href="industries.html#electronics">💻 Consumer Electronics</a>
+          <a href="industries.html#electrical">⚡ Power & Electrical</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="quality.html">🏆 Quality & Certs</a>
+    <a href="gallery.html">🖼️ Gallery</a>
+    <a href="contact.html">📬 Contact</a>
+  </nav>
+
+  <div class="mm-divider"></div>
+
+  <!-- Quick Actions -->
+  <div class="mm-actions">
+    <a href="contact.html" class="mm-cta mm-cta-primary">📩 Request a Quote</a>
+    <a href="https://wa.me/919876543210?text=Hello%20PCI%2C%20I%20would%20like%20a%20quote." class="mm-cta mm-cta-wa" target="_blank" rel="noopener">💬 WhatsApp Us</a>
+  </div>
+
+  <!-- Contact Info -->
+  <div class="mm-contact">
+    <a href="tel:+919876543210">📞 +91 98765 43210</a>
+    <a href="mailto:info@presscompintl.com">✉️ info@presscompintl.com</a>
+    <span style="font-size: 0.72rem; color: rgba(255,255,255,0.4); padding-left: 20px;">📍 MIDC Bhosari, Pune</span>
+  </div>
+
+  <!-- Footer -->
+  <div class="mm-footer">
+    <p>Premium Site by <a href="https://softsitesolution.in" target="_blank">SoftSite Solutions</a></p>
+  </div>
+</div>
+
 
 <section class="page-hero">
   <div class="container">
-    <div class="ph-crumb"><a href="index.html">Home</a> <span>/</span> Quality &amp; Certifications</div>
-    <h1 class="ph-title">Quality &amp; Certifications</h1>
-    <p style="color:rgba(255,255,255,0.65);max-width:560px;margin-top:12px;font-size:1.05rem;">Building trust through verified quality systems, third-party certifications, and customer recognition.</p>
+    <div class="ph-crumb"><a href="index.html">Home</a> <span>/</span> Quality & Certs</div>
+    <h1 class="ph-title">Quality & Certifications</h1>
+    <p class="ph-sub">IATF 16949 compliant manufacturing processes ensuring zero-defect quality and global standards.</p>
   </div>
 </section>
 
-<!-- CERTIFICATIONS & AWARDS -->
 <section class="section-pad">
   <div class="container">
     <div class="quality-grid">
@@ -187,6 +289,14 @@
 <script src="assets/js/main.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
 
